@@ -71,7 +71,11 @@ namespace _3DPrintingCostCalculator.Shared
         public float PricePerGram
         {
             get { return _PricePerGram; }
-            set { Set(nameof(PricePerGram), ref _PricePerGram, value); } //ComputeAll(); }
+            set
+            {
+                Set(nameof(PricePerGram), ref _PricePerGram, value); 
+                //ComputeAll();
+            }
         }
 
         private double _TotalMaterialCost = 0.0d;
@@ -123,6 +127,8 @@ namespace _3DPrintingCostCalculator.Shared
             this.Materials.Add(Enum_Materials.TPU);
             this.Materials.Add(Enum_Materials.PETG);
             this.Materials.Add(Enum_Materials.ABS);
+
+            this.SelectedMaterials = this.Materials[0];
         }
 
         void ComputeAll()
