@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="_3DPrintingCostCalculator.UWP.App">
       <uap:VisualElements
-        DisplayName="3DPrintingCostCalculator.UWP"
+        DisplayName="3D Printing Cost Calculator"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="3DPrintingCostCalculator.UWP"
