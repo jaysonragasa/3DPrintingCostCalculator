@@ -9,7 +9,9 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "3DPrintingCostCalculator.Sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3DPrintingCostCalculator.UWP", "3DPrintingCostCalculator.UWP\3DPrintingCostCalculator.UWP.csproj", "{ED1C1438-50C9-4B7E-A68E-4100A5E9691B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3DPrintingCostCalculator.WPF", "..\3DPrintingCostCalculator.WPF\3DPrintingCostCalculator.WPF.csproj", "{C3CD0769-D38F-4A17-A95C-2B712FC0064C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{DF1E788B-E283-48B5-9A2C-855B9A706055}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3DPrintingCostCalculator.WPF", "3DPrintingCostCalculator.WPF\3DPrintingCostCalculator.WPF.csproj", "{C3CD0769-D38F-4A17-A95C-2B712FC0064C}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -84,6 +86,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ED1C1438-50C9-4B7E-A68E-4100A5E9691B} = {A5AF4035-B6BD-4E27-83CE-0F1FD9098593}
+		{DF1E788B-E283-48B5-9A2C-855B9A706055} = {A5AF4035-B6BD-4E27-83CE-0F1FD9098593}
 		{C3CD0769-D38F-4A17-A95C-2B712FC0064C} = {A5AF4035-B6BD-4E27-83CE-0F1FD9098593}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
