@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:vm="clr-namespace:_3DPrintingCostCalculator.Shared"
+             mc:Ignorable="d"
+             x:Class="_3DPrintingCostCalculator.Xamarin.MainPage"
+             x:Name="thisPage">
+
+    <ContentPage.BindingContext>
+        <vm:ViewModel_Main />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Frame>
+                    <Grid>
+                        <Label Text="3D Printing Cost Calc" FontAttributes="Bold" FontSize="Large" />
+                    </Grid>
+                </Frame>
+
+                <Frame>
+                    <StackLayout>
+                        <Label Text="Material" FontAttributes="Bold" FontSize="Medium"/>
+
+                        <Picker ItemsSource="{Binding Materials}" 
+                                SelectedItem="{Binding BindingContext.SelectedMaterials, Source={x:Reference thisPage}, Mode=TwoWay}"
+                                />
+
+                        <Label Text="The cost of the filmanet per roll." />
+                        <Entry Text="{Binding FilamentCost}" Placeholder="Filament Cost" />
+                        <Label Text="Grams per roll." />
+                        <Entry Text="{Binding FilamentGrams}" Placeholder="Total grams" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame>
+                    <StackLayout>
+                        <Label Text="Cost of Material" FontAttributes="Bold" FontSize="Medium"/>
+                        <Label Text="Assuming filament diameter is 1.75mm" />
+
+                        <Entry Text="{Binding FilamentLengthUsed}" Placeholder="Filament length used" />
+                        <Entry Text="{Binding PricePerGram}" Placeholder="Price per gram" IsReadOnly="True" BackgroundColor="AntiqueWhite" />
+                        <Entry Text="{Binding TotalMaterialCost, Mode=TwoWay}" Placeholder="Total material cost" IsReadOnly="True" BackgroundColor="AntiqueWhite" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame>
+                    <StackLayout>
+                        <Label Text="Labor cost" FontAttributes="Bold" FontSize="Medium"/>
+                        <Entry Text="{Binding PrintingTimeInMinutes}" Placeholder="Printing time in minutes" />
+                        <Entry Text="{Binding CostPerHour}" Placeholder="Cost per hour" />
+                        <Entry Text="{Binding LaborCost, Mode=TwoWay}" Placeholder="Labor cost" IsReadOnly="True" BackgroundColor="AntiqueWhite" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame>
+                    <StackLayout>
+                        <Label Text="Final Price" FontAttributes="Bold" FontSize="Medium"/>
+                        <Entry Text="{Binding MarkupInPercent}" Placeholder="Markup in percent" />
+                        <Entry Text="{Binding FinalPrice, Mode=TwoWay}" Placeholder="Final Price" IsReadOnly="True" BackgroundColor="AntiqueWhite" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame>
+                    <StackLayout>
+                        <Button Text="Reset" x:Name="btnReset" Clicked="btnReset_Clicked" />
+                    </StackLayout>
+                </Frame>
+
+                <Grid Margin="0,0,0,20" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
