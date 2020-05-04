@@ -12,7 +12,9 @@ namespace _3DPrintingCostCalculator.Shared
             PLA,
             TPU,
             ABS,
-            PETG
+            PETG,
+            PETT,
+            HIPS
         }
 
         #region properties
@@ -28,23 +30,23 @@ namespace _3DPrintingCostCalculator.Shared
             {
                 Set(nameof(SelectedMaterials), ref _SelectedMaterials, value);
 
-                CheckBoxABS = value == Enum_Materials.ABS ? true : false;
-                CheckBoxTPU = value == Enum_Materials.TPU ? true : false;
-                CheckBoxPETG = value == Enum_Materials.PETG ? true : false;
-                CheckBoxPLA = value == Enum_Materials.PLA ? true : false;
+                //CheckBoxABS = value == Enum_Materials.ABS ? true : false;
+                //CheckBoxTPU = value == Enum_Materials.TPU ? true : false;
+                //CheckBoxPETG = value == Enum_Materials.PETG ? true : false;
+                //CheckBoxPLA = value == Enum_Materials.PLA ? true : false;
 
                 ComputeAll();
             }
         }
 
-        public bool CheckBoxPLA { get; set; } = false;
+        //public bool CheckBoxPLA { get; set; } = false;
 
-        public bool CheckBoxABS { get; set; } = false;
+        //public bool CheckBoxABS { get; set; } = false;
 
-        public bool CheckBoxTPU { get; set; } = false;
+        //public bool CheckBoxTPU { get; set; } = false;
 
-        private bool _CheckBoxPETG = false;
-        public bool CheckBoxPETG { get; set; } = false;
+        //private bool _CheckBoxPETG = false;
+        //public bool CheckBoxPETG { get; set; } = false;
 
         private double _FilamentCost = 0.0d;
         public double FilamentCost
@@ -127,19 +129,41 @@ namespace _3DPrintingCostCalculator.Shared
             this.Materials.Add(Enum_Materials.TPU);
             this.Materials.Add(Enum_Materials.PETG);
             this.Materials.Add(Enum_Materials.ABS);
+            this.Materials.Add(Enum_Materials.PETT);
+            this.Materials.Add(Enum_Materials.HIPS);
 
             this.SelectedMaterials = this.Materials[0];
         }
 
+        // computations are based in
+        // https://www.omnicalculator.com/other/3d-printing
         void ComputeAll()
         {
             // density
             float p = 0.0f;
+
             // g/cm3 is based from Cura Materials
-            if (CheckBoxABS) p = 1.10f;
-            else if (CheckBoxPLA) p = 1.24f;
-            else if (CheckBoxTPU) p = 1.22f;
-            else if (CheckBoxPETG) p = 1.38f;
+            switch(this.SelectedMaterials)
+            {
+                case Enum_Materials.ABS:
+                    p = 1.10f;
+                    break;
+                case Enum_Materials.HIPS:
+                    p = 1.04f;
+                    break;
+                case Enum_Materials.PETG:
+                    p = 1.38f;
+                    break;
+                case Enum_Materials.PETT:
+                    p = 1.45f;
+                    break;
+                case Enum_Materials.PLA:
+                    p = 1.24f;
+                    break;
+                case Enum_Materials.TPU:
+                    p = 1.22f;
+                    break;
+            }
 
             this.PricePerGram = (float)(this.FilamentCost / this.FilamentGrams);
 
@@ -147,6 +171,7 @@ namespace _3DPrintingCostCalculator.Shared
             double d = 1.75d;
 
             double materialcost = p * 3.14159265359f * Math.Pow((d / 2d), 2) * this.FilamentLengthUsed * this.PricePerGram;
+
             this.TotalMaterialCost = Math.Round((float)materialcost, 2);
 
             double laborcost = (this.PrintingTimeInMinutes / 60.00d) * this.CostPerHour;

@@ -20,9 +20,6 @@ namespace _3DPrintingCostCalculator.UWP
         {
             var vm = (ViewModel_Main)this.DataContext;
 
-            vm.CheckBoxABS = false;
-            vm.CheckBoxPLA = false;
-            vm.CheckBoxTPU = false;
             vm.FilamentLengthUsed = 0.0f;
             vm.PricePerGram = 0.0f;
             vm.PrintingTimeInMinutes = 0;
