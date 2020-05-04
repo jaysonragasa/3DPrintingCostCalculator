@@ -30,23 +30,9 @@ namespace _3DPrintingCostCalculator.Shared
             {
                 Set(nameof(SelectedMaterials), ref _SelectedMaterials, value);
 
-                //CheckBoxABS = value == Enum_Materials.ABS ? true : false;
-                //CheckBoxTPU = value == Enum_Materials.TPU ? true : false;
-                //CheckBoxPETG = value == Enum_Materials.PETG ? true : false;
-                //CheckBoxPLA = value == Enum_Materials.PLA ? true : false;
-
                 ComputeAll();
             }
         }
-
-        //public bool CheckBoxPLA { get; set; } = false;
-
-        //public bool CheckBoxABS { get; set; } = false;
-
-        //public bool CheckBoxTPU { get; set; } = false;
-
-        //private bool _CheckBoxPETG = false;
-        //public bool CheckBoxPETG { get; set; } = false;
 
         private double _FilamentCost = 0.0d;
         public double FilamentCost
