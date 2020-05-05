@@ -87,7 +87,7 @@
 
                     <StackPanel>
                         <TextBlock Text="Labor cost" FontWeight="Bold"/>
-                        <TextBlock Text="Printing time in minutes" />
+                        <TextBlock Text="Printing time" />
                         <!--<TextBox Text="{Binding PrintingTimeInMinutes, Mode=TwoWay}" />-->
                         <TimePicker Time="{Binding PrintingTime, Mode=TwoWay}" ClockIdentifier="24HourClock" />
                         <TextBlock Text="Cost per hour" />
