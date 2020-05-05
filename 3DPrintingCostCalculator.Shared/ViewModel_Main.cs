@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Security.AccessControl;
 
 namespace _3DPrintingCostCalculator.Shared
 {
@@ -107,6 +108,14 @@ namespace _3DPrintingCostCalculator.Shared
             get { return _FinalPrice; }
             set { Set(nameof(FinalPrice), ref _FinalPrice, value); }
         }
+
+        private TimeSpan _PrintingTime = new TimeSpan();
+        public TimeSpan PrintingTime
+        {
+            get { return _PrintingTime; }
+            set { Set(nameof(PrintingTime), ref _PrintingTime, value); ComputeAll(); }
+        }
+
         #endregion
 
         public ViewModel_Main()
@@ -160,7 +169,12 @@ namespace _3DPrintingCostCalculator.Shared
 
             this.TotalMaterialCost = Math.Round((float)materialcost, 2);
 
+#if __WPF__
             double laborcost = (this.PrintingTimeInMinutes / 60.00d) * this.CostPerHour;
+#else
+            double laborcost = this.PrintingTime.TotalHours * this.CostPerHour;
+#endif
+
             this.LaborCost = Math.Round((float)laborcost, 2);
 
             double materialpluslabor = (materialcost + laborcost);

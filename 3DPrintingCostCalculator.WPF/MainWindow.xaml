@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="3D Printing Cost Calculator" Height="450" Width="800" MinWidth="360"
         x:Name="thisPage"
+        xmlns:wpfex="http://schemas.xceed.com/wpf/xaml/toolkit"
         >
 
     <Window.DataContext>

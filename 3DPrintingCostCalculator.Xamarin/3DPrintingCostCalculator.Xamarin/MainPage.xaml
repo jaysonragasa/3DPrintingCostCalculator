@@ -50,7 +50,9 @@
                 <Frame>
                     <StackLayout>
                         <Label Text="Labor cost" FontAttributes="Bold" FontSize="Medium"/>
-                        <Entry Text="{Binding PrintingTimeInMinutes}" Placeholder="Printing time in minutes" />
+                        <!--<Entry Text="{Binding PrintingTimeInMinutes}" Placeholder="Printing time in minutes" />-->
+                        <Label Text="Printing time in minutes" />
+                        <TimePicker Format="HH:mm" Time="{Binding PrintingTime, Mode=TwoWay}" />
                         <Entry Text="{Binding CostPerHour}" Placeholder="Cost per hour" />
                         <Entry Text="{Binding LaborCost, Mode=TwoWay}" Placeholder="Labor cost" IsReadOnly="True" BackgroundColor="AntiqueWhite" />
                     </StackLayout>
