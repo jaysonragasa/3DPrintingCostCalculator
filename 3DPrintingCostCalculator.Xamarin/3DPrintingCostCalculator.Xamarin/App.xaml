@@ -4,8 +4,31 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="_3DPrintingCostCalculator.Xamarin.App">
+             x:Class="_3DPrintingCostCalculator.Xamarin.App"
+             >
+    
+    
     <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#FFE8E8C8" />
+            </Style>
 
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="#FFE8E8C8" />
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="#FFE8E8C8" />
+            </Style>
+
+            <Style TargetType="TimePicker">
+                <Setter Property="TextColor" Value="#FFE8E8C8" />
+            </Style>
+
+            <Style TargetType="Entry" x:Key="ReadonlyEntryDarkText">
+                <Setter Property="TextColor" Value="#FF404850" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

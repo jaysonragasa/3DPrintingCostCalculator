@@ -14,7 +14,7 @@
         <vm:ViewModel_Main />
     </Page.DataContext>
 
-    <Grid>
+    <Grid Background="#FF282830">
         <ScrollViewer>
             <Grid>
                 <StackPanel>
@@ -24,7 +24,13 @@
                         </Style>
                     </StackPanel.Resources>
 
-                    <StackPanel>
+                    <StackPanel Background="#FFD0D018" Padding="10">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock" BasedOn="{StaticResource DarkTextBlock}">
+                                
+                            </Style>
+                        </StackPanel.Resources>
+                        
                         <TextBlock Text="Material" FontWeight="Bold"/>
 
                         <ComboBox ItemsSource="{Binding Materials}" 
@@ -73,7 +79,7 @@
                         <TextBox Text="{Binding FilamentGrams, Mode=TwoWay}" />
                     </StackPanel>
 
-                    <StackPanel>
+                    <StackPanel Background="#FF404850" Padding="10">
                         <TextBlock Text="Cost of Material" FontWeight="Bold"/>
                         <TextBlock Text="Assuming filament diameter is 1.75mm" />
 
@@ -85,7 +91,7 @@
                         <TextBox Text="{Binding TotalMaterialCost, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
                     </StackPanel>
 
-                    <StackPanel>
+                    <StackPanel Background="#FF909808" Padding="10">
                         <TextBlock Text="Labor cost" FontWeight="Bold"/>
                         <TextBlock Text="Printing time" />
                         <!--<TextBox Text="{Binding PrintingTimeInMinutes, Mode=TwoWay}" />-->
@@ -96,7 +102,7 @@
                         <TextBox Text="{Binding LaborCost, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
                     </StackPanel>
 
-                    <StackPanel>
+                    <StackPanel Background="#FF404850" Padding="10">
                         <TextBlock Text="Final Price" FontWeight="Bold" />
                         <TextBlock Text="Markup in percent" />
                         <TextBox Text="{Binding MarkupInPercent, Mode=TwoWay}" />
@@ -104,7 +110,7 @@
                         <TextBox Text="{Binding FinalPrice, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
                     </StackPanel>
 
-                    <StackPanel>
+                    <StackPanel Visibility="Collapsed">
                         <Button Content="Reset" x:Name="btnReset" Click="btnReset_Click" />
                     </StackPanel>
                 </StackPanel>

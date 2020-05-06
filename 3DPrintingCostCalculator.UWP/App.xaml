@@ -4,4 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:_3DPrintingCostCalculator.UWP">
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FFE8E8C8" />
+            </Style>
+
+            <Style TargetType="TextBlock" x:Key="DarkTextBlock">
+                <Setter Property="Foreground" Value="#FF404850" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+
 </Application>
