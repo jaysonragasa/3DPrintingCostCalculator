@@ -16,17 +16,20 @@
     </ContentPage.BindingContext>
 
     <Grid BackgroundColor="#FF282830">
-        <ff:CachedImage Source="ttp.png" Aspect="AspectFill" VerticalOptions="Start" Margin="0,-50,0,0" Opacity="0.5" />
+        <ff:CachedImage Source="ttp.png" Aspect="AspectFill" Margin="0,-50,0,0" Opacity="0.5" />
         
         <ScrollView>
-            <StackLayout Margin="20,50,20,20">
+            <StackLayout Margin="20">
                 <Grid BackgroundColor="Transparent">
-                    <Label Text="3D Printing Cost Calc" FontSize="Large" TextColor="#FFD0D018" Margin="0,0,0,10" />
+                    <Label Text="&#xf0176;" FontFamily="material" TextColor="#FFD0D018" FontSize="Large" />
+                    <Label Text="3D Printing Cost Calculator" FontSize="Medium" TextColor="#FFD0D018" Margin="30,-3,0,10" />
                 </Grid>
+
+                <Label Text="Material" FontAttributes="Bold" FontSize="Medium" Margin="0,20" />
 
                 <Frame BackgroundColor="#DFD0D018">
                     <StackLayout>
-                        <Label Text="Material" FontAttributes="Bold" FontSize="Medium" TextColor="#FF404850" />
+                        
 
                         <Picker ItemsSource="{Binding Materials}" 
                                 SelectedItem="{Binding BindingContext.SelectedMaterials, Source={x:Reference thisPage}, Mode=TwoWay}"
@@ -40,19 +43,21 @@
                     </StackLayout>
                 </Frame>
 
+                <Label Text="Cost of Material" FontAttributes="Bold" FontSize="Medium" Margin="0,20"/>
+
                 <Frame BackgroundColor="#DF404850">
                     <StackLayout>
-                        <Label Text="Cost of Material" FontAttributes="Bold" FontSize="Medium"/>
                         <Label Text="Assuming filament diameter is 1.75mm" />
-                        <Entry Text="{Binding FilamentLengthUsed}" Placeholder="Filament length used" Keyboard="Numeric" />
+                        <Entry Text="{Binding FilamentLengthUsed}" Placeholder="Filament length used (in meters)" Keyboard="Numeric" />
                         <Entry Text="{Binding PricePerGram, StringFormat='{}{0:c}'}" Placeholder="Price per gram" IsReadOnly="True" BackgroundColor="AntiqueWhite" Style="{StaticResource ReadonlyEntryDarkText}" />
                         <Entry Text="{Binding TotalMaterialCost, Mode=TwoWay, StringFormat='{}{0:c}'}" Placeholder="Total material cost" IsReadOnly="True" BackgroundColor="AntiqueWhite" Style="{StaticResource ReadonlyEntryDarkText}" />
                     </StackLayout>
                 </Frame>
 
+                <Label Text="Labor cost" FontAttributes="Bold" FontSize="Medium" Margin="0,20"/>
+
                 <Frame BackgroundColor="#DF909808">
                     <StackLayout>
-                        <Label Text="Labor cost" FontAttributes="Bold" FontSize="Medium"/>
                         <!--<Entry Text="{Binding PrintingTimeInMinutes}" Placeholder="Printing time in minutes" />-->
                         <Label Text="Printing time" />
                         <TimePicker Format="HH:mm" Time="{Binding PrintingTime, Mode=TwoWay}" />
@@ -61,9 +66,10 @@
                     </StackLayout>
                 </Frame>
 
+                <Label Text="Final Price" FontAttributes="Bold" FontSize="Medium" Margin="0,20"/>
+
                 <Frame BackgroundColor="#DF404850">
                     <StackLayout>
-                        <Label Text="Final Price" FontAttributes="Bold" FontSize="Medium"/>
                         <Entry Text="{Binding MarkupInPercent}" Placeholder="Markup in percent" Keyboard="Numeric" />
                         <Entry Text="{Binding FinalPrice, Mode=TwoWay, StringFormat='{}{0:c}'}" Placeholder="Final Price" IsReadOnly="True" BackgroundColor="AntiqueWhite" Style="{StaticResource ReadonlyEntryDarkText}"  />
                     </StackLayout>

@@ -20,7 +20,7 @@ namespace _3DPrintingCostCalculator.Xamarin.Droid
             base.OnCreate(savedInstanceState);
 
             this.Window.AddFlags(WindowManagerFlags.Fullscreen);
-            this.Window.ClearFlags(WindowManagerFlags.Fullscreen);
+            this.Window.ClearFlags(WindowManagerFlags.KeepScreenOn);
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             CachedImageRenderer.InitImageViewHandler();
