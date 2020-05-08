@@ -160,7 +160,10 @@ namespace _3DPrintingCostCalculator.Shared
                     break;
             }
 
-            this.PricePerGram = (float)(this.FilamentCost / this.FilamentGrams);
+            this.PricePerGram = Try<float>(() =>
+            {
+                return (float)(this.FilamentCost / this.FilamentGrams);
+            }, 0.0f);
 
             // filament diameter
             double d = 1.75d;
@@ -191,6 +194,18 @@ namespace _3DPrintingCostCalculator.Shared
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        T Try<T>(Func<T> func, T error)
+        {
+            try
+            {
+                return func.Invoke();
+            }
+            catch
+            {
+                return error;
+            }
         }
     }
 }
