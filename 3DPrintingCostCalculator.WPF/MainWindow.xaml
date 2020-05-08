@@ -7,103 +7,98 @@
         mc:Ignorable="d"
         Title="3D Printing Cost Calculator" Height="450" Width="800" MinWidth="360"
         x:Name="thisPage"
-        xmlns:wpfex="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:wpfex="http://schemas.xceed.com/wpf/xaml/toolkit" Icon="StoreLogo.png"
         >
 
     <Window.DataContext>
         <vm:ViewModel_Main />
     </Window.DataContext>
 
-    <Grid>
+    <Grid  Background="#FF282830">
         <ScrollViewer>
+            <ScrollViewer.Background>
+                <ImageBrush ImageSource="ttp.png" Stretch="UniformToFill" />
+            </ScrollViewer.Background>
+            
             <Grid>
-                <StackPanel>
+                <StackPanel Margin="20,20">
                     <StackPanel.Resources>
-                        <Style TargetType="StackPanel">
-                            <Setter Property="Margin" Value="10" />
+                        <Style TargetType="Border">
+                            <Setter Property="Padding" Value="20" />
+                            <Setter Property="CornerRadius" Value="5" />
                         </Style>
                     </StackPanel.Resources>
 
-                    <StackPanel>
-                        <TextBlock Text="Material" FontWeight="Bold"/>
+                    <TextBlock Text="Material" FontWeight="Bold" Margin="0,0,0,20"/>
 
-                        <ComboBox ItemsSource="{Binding Materials}" 
-                                  SelectedItem="{Binding DataContext.SelectedMaterials, ElementName=thisPage, Mode=TwoWay}"
-                                  Margin="0,0,0,10"
+                    <Border Background="#CFD0D018">
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource DarkTextBlock}">
+
+                                </Style>
+                            </StackPanel.Resources>
+                            
+                            <ComboBox ItemsSource="{Binding Materials}" 
+                                      SelectedItem="{Binding DataContext.SelectedMaterials, ElementName=thisPage, Mode=TwoWay}"
+                                      Margin="0,0,0,10"
+                                      Foreground="#FF404850"
                                   >
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding }" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding }" Style="{StaticResource DarkTextBlock}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
 
-                        <!--<Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="The cost of the filmanet per roll." />
+                            <TextBlock Text="Filament Cost" />
+                            <TextBox Text="{Binding FilamentCost, Mode=TwoWay}" />
+                            <TextBlock Text="Total grams" />
+                            <TextBox Text="{Binding FilamentGrams, Mode=TwoWay}" />
+                        </StackPanel>
+                    </Border>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
+                    <TextBlock Text="Cost of Material" FontWeight="Bold" Margin="0,20"/>
 
-                            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
-                                <CheckBox IsChecked="{Binding CheckBoxPLA, Mode=TwoWay}" Content="PLA" />
-                            </StackPanel>
+                    <Border Background="#CF404850">
+                        <StackPanel>
+                            <TextBlock Text="Assuming filament diameter is 1.75mm" />
 
-                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
-                                <CheckBox IsChecked="{Binding CheckBoxTPU, Mode=TwoWay}" Content="TPU" />
-                            </StackPanel>
+                            <TextBlock Text="Filament length used" />
+                            <TextBox Text="{Binding FilamentLengthUsed, Mode=TwoWay}" />
+                            <TextBlock Text="Price per gram" />
+                            <TextBox Text="{Binding PricePerGram, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
+                            <TextBlock Text="Total material cost" />
+                            <TextBox Text="{Binding TotalMaterialCost, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
+                        </StackPanel>
+                    </Border>
 
-                            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
-                                <CheckBox IsChecked="{Binding CheckBoxABS, Mode=TwoWay}" Content="ABS" />
-                            </StackPanel>
+                    <TextBlock Text="Labor cost" FontWeight="Bold" Margin="0,20"/>
 
-                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
-                                <CheckBox IsChecked="{Binding CheckBoxPETG, Mode=TwoWay}" Content="PETG" />
-                            </StackPanel>
-                        </Grid>-->
+                    <Border Background="#CF909808">
+                        <StackPanel>
+                            <TextBlock Text="Printing time in minutes" />
+                            <TextBox Text="{Binding PrintingTimeInMinutes, Mode=TwoWay}" />
+                            <TextBlock Text="Cost per hour" />
+                            <TextBox Text="{Binding CostPerHour, Mode=TwoWay}" />
+                            <TextBlock Text="Labor cost" />
+                            <TextBox Text="{Binding LaborCost, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
+                        </StackPanel>
+                    </Border>
 
-                        <TextBlock Text="The cost of the filmanet per roll." />
-                        <TextBlock Text="Filament Cost" />
-                        <TextBox Text="{Binding FilamentCost, Mode=TwoWay}" />
-                        <TextBlock Text="Total grams" />
-                        <TextBox Text="{Binding FilamentGrams, Mode=TwoWay}" />
-                    </StackPanel>
+                    <TextBlock Text="Final Price" FontWeight="Bold" Margin="0,20" />
 
-                    <StackPanel>
-                        <TextBlock Text="Cost of Material" FontWeight="Bold"/>
-                        <TextBlock Text="Assuming filament diameter is 1.75mm" />
+                    <Border Background="#CF404850">
+                        <StackPanel>
+                            <TextBlock Text="Markup in percent" />
+                            <TextBox Text="{Binding MarkupInPercent, Mode=TwoWay}" />
+                            <TextBlock Text="Final Price" />
+                            <TextBox Text="{Binding FinalPrice, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
+                        </StackPanel>
+                    </Border>
 
-                        <TextBlock Text="Filament length used" />
-                        <TextBox Text="{Binding FilamentLengthUsed, Mode=TwoWay}" />
-                        <TextBlock Text="Price per gram" />
-                        <TextBox Text="{Binding PricePerGram, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
-                        <TextBlock Text="Total material cost" />
-                        <TextBox Text="{Binding TotalMaterialCost, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
-                    </StackPanel>
-
-                    <StackPanel>
-                        <TextBlock Text="Labor cost" FontWeight="Bold"/>
-                        <TextBlock Text="Printing time in minutes" />
-                        <TextBox Text="{Binding PrintingTimeInMinutes, Mode=TwoWay}" />
-                        <TextBlock Text="Cost per hour" />
-                        <TextBox Text="{Binding CostPerHour, Mode=TwoWay}" />
-                        <TextBlock Text="Labor cost" />
-                        <TextBox Text="{Binding LaborCost, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
-                    </StackPanel>
-
-                    <StackPanel>
-                        <TextBlock Text="Final Price" FontWeight="Bold" />
-                        <TextBlock Text="Markup in percent" />
-                        <TextBox Text="{Binding MarkupInPercent, Mode=TwoWay}" />
-                        <TextBlock Text="Final Price" />
-                        <TextBox Text="{Binding FinalPrice, Mode=TwoWay}" IsReadOnly="True" Background="AntiqueWhite" />
-                    </StackPanel>
-
-                    <StackPanel>
+                    <StackPanel Visibility="Collapsed">
                         <Button Content="Reset" x:Name="btnReset" Click="btnReset_Click" />
                     </StackPanel>
                 </StackPanel>

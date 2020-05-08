@@ -4,6 +4,18 @@
              xmlns:local="clr-namespace:_3DPrintingCostCalculator.WPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FFE8E8C8" />
+            </Style>
+
+            <Style TargetType="TextBlock" x:Key="DarkTextBlock">
+                <Setter Property="Foreground" Value="#FF404850" />
+            </Style>
+
+            <Style TargetType="ComboBox" x:Key="DarkTextComboBox">
+                <Setter Property="Foreground" Value="#FF404850" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
